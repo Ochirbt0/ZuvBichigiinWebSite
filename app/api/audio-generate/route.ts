@@ -20,8 +20,6 @@ export async function POST(req: NextRequest) {
       body: text,
     });
 
-    // console.log("HAS KEY:", !!process.env.NEXT_PUBLIC_CHIMEGE_API_KEY);
-
     if (!res.ok) {
       const errText = await res.text();
       return NextResponse.json(
