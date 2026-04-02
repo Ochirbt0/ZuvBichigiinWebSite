@@ -11,11 +11,19 @@ datasource db {
 model UserProgress {
   id        String   @id @default(cuid())
   userId    String
-  grade     Int      // 1, 2, 3, 4, 5-р анги
-  level     String   // "easy", "medium", "hard"
-  topicId   Int      // 1-ээс 8 хүртэлх дугаар
+  grade     Int      
+  level     String   
+  topicId   Int      
   completed Boolean  @default(false)
 
-  // Нэг хэрэглэгч нэг ангийн, нэг түвшний, нэг сэдвийг давхар хадгалахгүй байх
+ 
   @@unique([userId, grade, level, topicId])
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  avatarUrl String?
+  score     Int      @default(0)
+  createdAt DateTime @default(now())
 }
