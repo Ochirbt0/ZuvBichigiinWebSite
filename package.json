@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
+<<<<<<< 12-aral-tsooj-tailah
     "@prisma/adapter-pg": "^7.6.0",
     "@prisma/client": "^7.6.0",
     "cors": "^2.8.6",
@@ -19,6 +20,10 @@
     "next": "16.2.1",
     "openai": "^6.33.0",
     "prisma": "^7.6.0",
+=======
+    "next": "16.1.0",
+    "openai": "^6.32.0",
+>>>>>>> main
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
