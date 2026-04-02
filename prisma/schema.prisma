@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+
+model UserProgress {
+  id        String   @id @default(cuid())
+  userId    String
+  grade     Int      // 1, 2, 3, 4, 5-р анги
+  level     String   // "easy", "medium", "hard"
+  topicId   Int      // 1-ээс 8 хүртэлх дугаар
+  completed Boolean  @default(false)
+
+  // Нэг хэрэглэгч нэг ангийн, нэг түвшний, нэг сэдвийг давхар хадгалахгүй байх
+  @@unique([userId, grade, level, topicId])
+}
