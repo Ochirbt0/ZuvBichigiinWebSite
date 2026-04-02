@@ -1,5 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 
+function calculateScore(errors: number) {
+  if (errors === 0) return 10;
+  if (errors === 1) return 9;
+  if (errors === 2) return 7;
+  return 5;
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { text } = await req.json();
@@ -12,7 +19,7 @@ export async function POST(req: NextRequest) {
       method: "POST",
       headers: {
         "Content-Type": "text/plain",
-        token: process.env.NEXT_PUBLIC_CHIMEGE_API_SPELL_CHECK!,
+        token: process.env.BOLOR_API_TOKEN!,
       },
       body: text,
     });
@@ -24,10 +31,16 @@ export async function POST(req: NextRequest) {
 
     const incorrects: string[] = await res.json();
 
+    const errors = incorrects.length;
+    const score = calculateScore(errors);
+
     return NextResponse.json({
       originalText: text,
       incorrectWords: incorrects,
-      hasErrors: incorrects.length > 0,
+      errors,
+      score,
+
+      hasErrors: errors > 0,
     });
   } catch (error) {
     console.error(error);

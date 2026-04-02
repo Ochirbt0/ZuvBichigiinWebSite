@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
     const res = await fetch("https://api.chimege.com/v1.2/synthesize", {
       method: "POST",
       headers: {
-        "Content-Type": "plain/text",
+        "Content-Type": "text/plain",
         Token: `${process.env.NEXT_PUBLIC_CHIMEGE_API_KEY}`,
       },
       body: text,
